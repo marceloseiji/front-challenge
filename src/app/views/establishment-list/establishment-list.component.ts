@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { EstablishmentService } from '../../shared/service/establishment.service';
 @Component({
   selector: 'app-establishment-list',
   templateUrl: './establishment-list.component.html',
@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EstablishmentListComponent implements OnInit {
 
-  constructor() { }
+  establishments_getted: [];
+
+  constructor(
+    public establishmentService: EstablishmentService
+  ) {}
 
   ngOnInit(): void {
+    this.getEstablishments();
+  }
+
+  getEstablishments() {
+    this.establishmentService.getEstablishments().subscribe(data => {
+      this.establishments_getted = data;
+      console.log(this.establishments_getted);
+    })
   }
 
 }
