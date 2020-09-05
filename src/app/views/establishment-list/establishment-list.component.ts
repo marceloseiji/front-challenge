@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ResponseEstablishment } from 'src/app/shared/model/responseEstablishment.model';
 import { EstablishmentService } from '../../shared/service/establishment.service';
 @Component({
   selector: 'app-establishment-list',
@@ -7,10 +9,10 @@ import { EstablishmentService } from '../../shared/service/establishment.service
 })
 export class EstablishmentListComponent implements OnInit {
 
-  establishments_getted: any;
+  establishments_getted$: Observable<ResponseEstablishment>;
 
   constructor(
-    public establishmentService: EstablishmentService
+    private establishmentService: EstablishmentService
   ) {}
 
   ngOnInit(): void {
@@ -18,10 +20,12 @@ export class EstablishmentListComponent implements OnInit {
   }
 
   getEstablishments() {
-    this.establishmentService.getEstablishments().subscribe(data => {
-      this.establishments_getted = data;
-      console.log(this.establishments_getted);
-    })
+    this.establishments_getted$ = this.establishmentService.getEstablishments();
+    //this.establishmentService.getEstablishments().subscribe(res => console.log(res));
+  }
+
+  showInfos(item) {
+    console.log(item)
   }
 
 }
