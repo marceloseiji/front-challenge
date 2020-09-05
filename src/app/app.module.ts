@@ -12,6 +12,9 @@ import { EstablishmentListComponent } from './views/establishment-list/establish
 import { NavComponent } from './views/nav/nav.component';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
+import { InfosFormComponent } from './views/infos-form/infos-form.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     EstablishmentListComponent,
     NavComponent,
+    InfosFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatIconModule,
     MatListModule,
     MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
