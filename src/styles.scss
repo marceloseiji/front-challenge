@@ -1,12 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 $black: #333;
+$white: #fafafa;
 $grey: #888;
+$white-grey: #efefef;
 
 html,
 body {
   height: 100%;
+  background-color: $white-grey;
 }
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.container {
+  padding: 1vw 15vw;
 }

@@ -1,11 +1,31 @@
 @import "../../../styles.scss";
 
-.mat-list-item {
-  color: $black;
-}
-
-.mat-card {
-  background: #424242;
-  color: #fff;
-  width: 100%;
+.mat-list-base {
+  .mat-list-item {
+    color: $black;
+    height: inherit;
+    padding: 5px 0;
+  }
+  .mat-card {
+    background: $white;
+    color: $black;
+    width: 100%;
+    box-shadow: none;
+    padding: 7px;
+    .mat-card-header {
+      .mat-card-avatar {
+        width: 84px;
+        height: auto;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 3px;
+      }
+      .mat-card-title {
+        color: $black;
+      }
+      .mat-card-subtitle {
+        color: $black;
+      }
+    }
+  }
 }

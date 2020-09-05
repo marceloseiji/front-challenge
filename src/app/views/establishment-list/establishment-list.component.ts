@@ -7,7 +7,7 @@ import { EstablishmentService } from '../../shared/service/establishment.service
 })
 export class EstablishmentListComponent implements OnInit {
 
-  establishments_getted: [];
+  establishments_getted: any;
 
   constructor(
     public establishmentService: EstablishmentService
