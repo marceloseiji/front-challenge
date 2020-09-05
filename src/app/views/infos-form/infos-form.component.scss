@@ -1,0 +1,11 @@
+@import "../../../styles.scss";
+
+.infos-form {
+  display: block;
+  .form-body {
+    margin: 0 16px;
+    border-radius: 3px;
+    background-color: $white;
+    padding: 7px;
+  }
+}
