@@ -18,6 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { NgxWebstorageModule } from 'ngx-webstorage';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatDividerModule,
     MatSelectModule,
     MatButtonModule,
+    NgxWebstorageModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

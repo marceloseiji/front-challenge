@@ -12,6 +12,11 @@
     width: 100%;
     box-shadow: none;
     padding: 7px;
+    transition: .5s ease;
+    &:hover {
+      cursor: pointer;
+      box-shadow: 2px 1px 8px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    }
     .mat-card-header {
       .mat-card-avatar {
         width: 84px;
