@@ -19,6 +19,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { NgxWebstorageModule } from 'ngx-webstorage';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { NgxWebstorageModule } from 'ngx-webstorage';
     MatSelectModule,
     MatButtonModule,
     NgxWebstorageModule.forRoot(),
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
