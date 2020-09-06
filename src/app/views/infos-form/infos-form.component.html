@@ -1,9 +1,12 @@
 <div class="infos-form container">
   <div class="form-body">
-
     <mat-card>
       <mat-card-header>
-        <div mat-card-avatar class="header-image" style="background-image: url({{itemReceived.picture}})"></div>
+        <div
+          mat-card-avatar
+          class="header-image"
+          style="background-image: url({{itemReceived.picture}})"
+        ></div>
         <mat-card-title>{{ itemReceived.name }}</mat-card-title>
         <mat-card-subtitle>{{ itemReceived.id }}</mat-card-subtitle>
       </mat-card-header>
@@ -14,7 +17,12 @@
 
     <mat-form-field appearance="outline" color="primary">
       <mat-label>Nome</mat-label>
-      <input matInput placeholder="Nome" value="{{ itemReceived.name }}">
+      <input
+        matInput
+        placeholder="Nome"
+        [(ngModel)]="itemReceived.name"
+        value="{{ itemReceived.name }}"
+      />
     </mat-form-field>
 
     <mat-list-item>Endereço</mat-list-item>
@@ -22,22 +30,42 @@
 
     <mat-form-field appearance="outline" color="primary">
       <mat-label>Estado</mat-label>
-      <input matInput placeholder="Estado" value="{{ $state }}">
+      <input
+        matInput
+        placeholder="Estado"
+        [(ngModel)]="otherInfos.$state"
+        value="{{ otherInfos.$state }}"
+      />
     </mat-form-field>
 
     <mat-form-field appearance="outline" color="primary">
       <mat-label>Cidade</mat-label>
-      <input matInput placeholder="Cidade" value="{{ $city }}">
+      <input
+        matInput
+        placeholder="Cidade"
+        [(ngModel)]="otherInfos.$city"
+        value="{{ otherInfos.$city }}"
+      />
     </mat-form-field>
 
     <mat-form-field appearance="outline" color="primary">
       <mat-label>Logradouro</mat-label>
-      <input matInput placeholder="EnderLogradouroeço" value="{{ $street }}">
+      <input
+        matInput
+        placeholder="EnderLogradouroeço"
+        [(ngModel)]="otherInfos.$street"
+        value="{{ otherInfos.$street }}"
+      />
     </mat-form-field>
 
     <mat-form-field appearance="outline" color="primary">
       <mat-label>CEP</mat-label>
-      <input matInput placeholder="CEP" value="{{ $zipCode }}">
+      <input
+        matInput
+        placeholder="CEP"
+        [(ngModel)]="otherInfos.$zipCode"
+        value="{{ otherInfos.$zipCode }}"
+      />
     </mat-form-field>
 
     <mat-list-item>Financeiro</mat-list-item>
@@ -45,55 +73,58 @@
 
     <mat-form-field appearance="outline" color="primary">
       <mat-label>Banco</mat-label>
-      <mat-select>
-        <mat-option value="option">Banco do Brasil</mat-option>
-        <mat-option value="option">Bradesco</mat-option>
-        <mat-option value="option">Itaú</mat-option>
+      <mat-select [(ngModel)]="otherInfos.$banco">
+        <mat-option *ngFor="let banco of $bancos" value="{{banco.nome}}">{{banco.nome}}</mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="outline" color="primary">
       <mat-label>Tipo de conta</mat-label>
-      <mat-select>
-        <mat-option value="option">Conta corrente</mat-option>
-        <mat-option value="option">Poupança</mat-option>
+      <mat-select [(ngModel)]="otherInfos.$tipoConta">
+        <mat-option *ngFor="let conta of $contas" value="{{conta.tipo}}">{{conta.tipo}}</mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="outline" color="primary">
       <mat-label>CPF/CNPJ</mat-label>
-      <input matInput placeholder="CEP" value="">
+      <input [(ngModel)]="otherInfos.$cpfCnpj" matInput placeholder="CEP" value="{{otherInfos.$cpfCnpj}" />
     </mat-form-field>
 
     <div class="example-full-width" cellspacing="0">
       <label>Agência</label>
       <mat-form-field appearance="outline" color="primary">
-        <input maxLength="4" matInput placeholder="0000" value="">
+        <input [(ngModel)]="otherInfos.$agencia" maxLength="4" matInput placeholder="0000" value="{{otherInfos.$agencia}}" />
       </mat-form-field>
       <mat-form-field appearance="outline" color="primary">
-        <input maxLength="1" matInput placeholder="0" value="">
+        <input [(ngModel)]="otherInfos.$agenciaDigito" maxLength="1" matInput placeholder="0" value="{{otherInfos.$agenciaDigito}}" />
       </mat-form-field>
     </div>
 
     <div class="example-full-width" cellspacing="0">
       <label>Conta</label>
       <mat-form-field appearance="outline" color="primary">
-        <input maxLength="4" matInput placeholder="0000" value="">
+        <input [(ngModel)]="otherInfos.$contaNumero" maxLength="4" matInput placeholder="0000" value="{{otherInfos.$contaNumero}}" />
       </mat-form-field>
       <mat-form-field appearance="outline" color="primary">
-        <input maxLength="1" matInput placeholder="0" value="">
+        <input [(ngModel)]="otherInfos.$contaDigito" maxLength="1" matInput placeholder="0" value="{{otherInfos.$contaDigito}}" />
       </mat-form-field>
     </div>
 
     <mat-form-field appearance="outline" color="primary">
       <mat-label>Saque automático</mat-label>
-      <mat-select>
-        <mat-option value="option">Sim</mat-option>
-        <mat-option value="option">Não</mat-option>
+      <mat-select [(ngModel)]="otherInfos.$saqueAutomatico">
+        <mat-option *ngFor="let opcao of $saqueOpcoes" value="{{opcao.tipo}}">{{opcao.tipo}}</mat-option>
       </mat-select>
     </mat-form-field>
 
-    <button class="submit-button" mat-flat-button>Salvar</button>
-
+    <button
+      disabled
+      (click)="changeEstablishment()"
+      id="sendSubmit"
+      class="submit-button disabled"
+      mat-flat-button
+    >
+      Salvar
+    </button>
   </div>
 </div>

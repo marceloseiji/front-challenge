@@ -13,5 +13,13 @@
     color: $white;
     border-radius: 25px;
     padding: 5px 30px;
+    transition: .5s ease;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .submit-button.disabled {
+    background-color: #96dbaf;
   }
 }
