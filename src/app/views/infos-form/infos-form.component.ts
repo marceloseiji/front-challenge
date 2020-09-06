@@ -44,10 +44,10 @@ export class InfosFormComponent implements OnInit {
       this.$state = cut[2];
       this.$zipCode = cut[3];
 
-      console.log("street: ", this.$street)
-      console.log("city: ", this.$city)
-      console.log("state: ", this.$state)
-      console.log("zipCode: ", this.$zipCode)
+      // console.log("street: ", this.$street)
+      // console.log("city: ", this.$city)
+      // console.log("state: ", this.$state)
+      // console.log("zipCode: ", this.$zipCode)
       
     });
   }

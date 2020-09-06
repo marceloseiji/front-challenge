@@ -4,7 +4,7 @@
       <mat-card-header>
         <div mat-card-avatar class="header-image" style="background-image: url({{item.picture}});"></div>
         <mat-card-title>{{ item.name }}<mat-card-subtitle class="item-id">{{ item.id }}</mat-card-subtitle></mat-card-title>
-        <mat-card-subtitle>{{ item.address }}</mat-card-subtitle>
+        <mat-card-subtitle>{{ cutAddress(item.address) }}</mat-card-subtitle>
       </mat-card-header>
     </mat-card>
   </mat-list-item>

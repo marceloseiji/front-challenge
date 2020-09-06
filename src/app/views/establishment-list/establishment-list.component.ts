@@ -11,6 +11,12 @@ export class EstablishmentListComponent implements OnInit {
 
   establishments_getted$: Observable<ResponseEstablishment>;
 
+  $street: any;
+  $city: any;
+  $state: any;
+  $zipCode: any;
+  $formatedAddress: string;
+
   constructor(
     private establishmentService: EstablishmentService
   ) {}
@@ -26,6 +32,19 @@ export class EstablishmentListComponent implements OnInit {
 
   sendInfos(item) {
     this.establishmentService.showInfos(item); //Usa a função showInfos do serviço establihsment.service e envia o item recebido do componente
+  }
+
+  cutAddress(address) {
+    let cut = address.split(",");
+
+    this.$street = cut[0];
+    this.$city = cut[1];
+    this.$state = cut[2];
+    this.$zipCode = cut[3];
+
+    this.$formatedAddress = `${this.$city} \u00A0 | \u00A0 ${this.$street}, \u00A0${this.$state}\u00A0 - \u00A0${this.$city}`;
+
+    return this.$formatedAddress;
   }
 
 }
