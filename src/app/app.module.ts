@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { InfosFormComponent } from './views/infos-form/infos-form.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { MatInputModule } from '@angular/material/input';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+    MatDividerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

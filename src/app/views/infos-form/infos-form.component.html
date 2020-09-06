@@ -1,10 +1,20 @@
 <div class="infos-form container">
   <div class="form-body">
+
+    <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar class="header-image" style="background-image: url({{itemReceived.picture}})"></div>
+        <mat-card-title>{{ itemReceived.name }}</mat-card-title>
+        <mat-card-subtitle>{{ itemReceived.id }}</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+
+    <mat-list-item>Item 1</mat-list-item>
+    <mat-divider></mat-divider>
     <mat-form-field appearance="outline" color="primary">
       <mat-label>Outline form field</mat-label>
       <input matInput placeholder="Placeholder">
       <mat-icon matSuffix>expand_more</mat-icon>
-      <mat-hint>Hint</mat-hint>
     </mat-form-field>
   </div>
 </div>

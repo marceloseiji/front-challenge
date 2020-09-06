@@ -24,8 +24,8 @@ export class EstablishmentListComponent implements OnInit {
     //this.establishmentService.getEstablishments().subscribe(res => console.log(res));
   }
 
-  showInfos(item) {
-    console.log(item)
+  sendInfos(item) {
+    this.establishmentService.showInfos(item); //Usa a função showInfos do serviço establihsment.service e envia o item recebido do componente
   }
 
 }
