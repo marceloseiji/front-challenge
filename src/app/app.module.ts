@@ -42,7 +42,7 @@ import { NgxWebstorageModule } from 'ngx-webstorage';
     MatDividerModule,
     MatSelectModule,
     MatButtonModule,
-    NgxWebstorageModule,
+    NgxWebstorageModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
