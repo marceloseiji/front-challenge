@@ -9,13 +9,89 @@
       </mat-card-header>
     </mat-card>
 
-    <mat-list-item>Item 1</mat-list-item>
+    <mat-list-item>Informações básicas</mat-list-item>
     <mat-divider></mat-divider>
+
     <mat-form-field appearance="outline" color="primary">
-      <mat-label>Outline form field</mat-label>
-      <input matInput placeholder="Placeholder">
-      <mat-icon matSuffix>expand_more</mat-icon>
+      <mat-label>Nome</mat-label>
+      <input matInput placeholder="Nome" value="{{ itemReceived.name }}">
     </mat-form-field>
+
+    <mat-list-item>Endereço</mat-list-item>
+    <mat-divider></mat-divider>
+
+    <mat-form-field appearance="outline" color="primary">
+      <mat-label>Estado</mat-label>
+      <input matInput placeholder="Estado" value="{{ $state }}">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" color="primary">
+      <mat-label>Cidade</mat-label>
+      <input matInput placeholder="Cidade" value="{{ $city }}">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" color="primary">
+      <mat-label>Logradouro</mat-label>
+      <input matInput placeholder="EnderLogradouroeço" value="{{ $street }}">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" color="primary">
+      <mat-label>CEP</mat-label>
+      <input matInput placeholder="CEP" value="{{ $zipCode }}">
+    </mat-form-field>
+
+    <mat-list-item>Financeiro</mat-list-item>
+    <mat-divider></mat-divider>
+
+    <mat-form-field appearance="outline" color="primary">
+      <mat-label>Banco</mat-label>
+      <mat-select>
+        <mat-option value="option">Banco do Brasil</mat-option>
+        <mat-option value="option">Bradesco</mat-option>
+        <mat-option value="option">Itaú</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" color="primary">
+      <mat-label>Tipo de conta</mat-label>
+      <mat-select>
+        <mat-option value="option">Conta corrente</mat-option>
+        <mat-option value="option">Poupança</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" color="primary">
+      <mat-label>CPF/CNPJ</mat-label>
+      <input matInput placeholder="CEP" value="">
+    </mat-form-field>
+
+    <div class="example-full-width" cellspacing="0">
+      <label>Agência</label>
+      <mat-form-field appearance="outline" color="primary">
+        <input maxLength="4" matInput placeholder="0000" value="">
+      </mat-form-field>
+      <mat-form-field appearance="outline" color="primary">
+        <input maxLength="1" matInput placeholder="0" value="">
+      </mat-form-field>
+    </div>
+
+    <div class="example-full-width" cellspacing="0">
+      <label>Conta</label>
+      <mat-form-field appearance="outline" color="primary">
+        <input maxLength="4" matInput placeholder="0000" value="">
+      </mat-form-field>
+      <mat-form-field appearance="outline" color="primary">
+        <input maxLength="1" matInput placeholder="0" value="">
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline" color="primary">
+      <mat-label>Saque automático</mat-label>
+      <mat-select>
+        <mat-option value="option">Sim</mat-option>
+        <mat-option value="option">Não</mat-option>
+      </mat-select>
+    </mat-form-field>
+
   </div>
 </div>
-

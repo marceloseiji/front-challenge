@@ -23,6 +23,11 @@ export class InfosFormComponent implements OnInit {
     registered: ""
   };
 
+  $street: any;
+  $city: any;
+  $state: any;
+  $zipCode: any;
+
   constructor(
     private establishmentService: EstablishmentService,
   ) { }
@@ -31,6 +36,19 @@ export class InfosFormComponent implements OnInit {
     //item recebido do establishment.service itemSend que é um Subject
     this.establishmentService.itemSend.subscribe(item => {
       this.itemReceived = item
+      
+      const cut = this.itemReceived.address.split(",");
+
+      this.$street = cut[0];
+      this.$city = cut[1];
+      this.$state = cut[2];
+      this.$zipCode = cut[3];
+
+      console.log("street: ", this.$street)
+      console.log("city: ", this.$city)
+      console.log("state: ", this.$state)
+      console.log("zipCode: ", this.$zipCode)
+      
     });
   }
 
