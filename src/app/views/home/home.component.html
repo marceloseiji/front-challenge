@@ -1,3 +1,7 @@
 <app-nav></app-nav>
-<app-infos-form></app-infos-form>
-<app-establishment-list></app-establishment-list>
+
+<app-infos-form style="display: none;" id='form'>
+  <button (click)="showHide()">Button</button>
+</app-infos-form>
+
+<app-establishment-list style="display: block;" (click)="showHide()" id="list"></app-establishment-list>

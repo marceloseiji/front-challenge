@@ -20,6 +20,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { FormsModule } from '@angular/forms';
+import { OnCreateCheckDirective } from './shared/directives/on-create-check.directive';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { FormsModule } from '@angular/forms';
     EstablishmentListComponent,
     NavComponent,
     InfosFormComponent,
+    OnCreateCheckDirective,
   ],
   imports: [
     BrowserModule,

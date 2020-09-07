@@ -18,12 +18,11 @@ export class EstablishmentListComponent implements OnInit {
   $state: any;
   $zipCode: any;
   $formatedAddress: string;
-
   retrievedItem;
 
   constructor(
     private establishmentService: EstablishmentService,
-    private storage:LocalStorageService
+    private storage:LocalStorageService,
   ) {}
 
   ngOnInit(): void {
@@ -60,7 +59,6 @@ export class EstablishmentListComponent implements OnInit {
 
       item.name = this.retrievedItem.name;
       item.address = this.retrievedItem.address;
-      console.log("Click");
     }
   }
 

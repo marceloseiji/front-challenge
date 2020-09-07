@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { EstablishmentService } from '../../shared/service/establishment.service';
 import { ResponseEstablishment } from '../../shared/model/responseEstablishment.model';
-import { NgForm } from '@angular/forms';
-import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
+import { LocalStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-infos-form',
   templateUrl: './infos-form.component.html',
-  styleUrls: ['./infos-form.component.scss']
+  styleUrls: ['./infos-form.component.scss'],
 })
 export class InfosFormComponent implements OnInit {
 
@@ -60,7 +59,7 @@ export class InfosFormComponent implements OnInit {
 
   constructor(
     private establishmentService: EstablishmentService,
-    private storage:LocalStorageService
+    private storage:LocalStorageService,
   ) { }
 
   public changeEstablishment() {
