@@ -12,24 +12,55 @@
     width: 100%;
     box-shadow: none;
     padding: 7px;
-    transition: .5s ease;
+    transition: 0.5s ease;
     &:hover {
       cursor: pointer;
-      box-shadow: 2px 1px 8px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+      box-shadow: 2px 1px 8px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+        0px 1px 3px 0px rgba(0, 0, 0, 0.12);
     }
     .mat-card-header {
+      .contents {
+        margin-left: 15px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
       .mat-card-avatar {
         width: 84px;
-        height: auto;
+        height: 84px;
         background-repeat: no-repeat;
         background-size: cover;
         border-radius: 3px;
       }
       .mat-card-title {
         color: $black;
+        display: flex;
+        flex-wrap: wrap;
+        .item-id {
+          margin-left: 10px;
+          line-height: 25px;
+          color: $grey;
+          font-size: 14px;
+        }
       }
       .mat-card-subtitle {
         color: $black;
+        margin: 0;
+        color: $grey;
+      }
+      @media(max-width: 600px) {
+        display: flex;
+        flex-direction: column;
+        .contents {
+          margin-top: 10px;
+          margin-left: 0%;
+        }
+        .mat-card-title {
+          .mat-card-subtitle, .item-id {
+            margin-left: 0px;
+          }
+        }
       }
     }
   }

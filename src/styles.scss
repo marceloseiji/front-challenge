@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/theming';
+@import "~@angular/material/theming";
 @include mat-core();
 
 $black: #333;
@@ -7,8 +7,8 @@ $white: #fafafa;
 $grey: #888;
 $white-grey: #efefef;
 
-$primary: mat-palette($mat-gray,400);
-$accent: mat-palette($mat-orange,200);
+$primary: mat-palette($mat-gray, 400);
+$accent: mat-palette($mat-orange, 200);
 
 $theme: mat-light-theme($primary, $accent);
 @include angular-material-theme($theme);

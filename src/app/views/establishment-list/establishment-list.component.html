@@ -8,22 +8,24 @@
       (click)="sendInfos(item); showHide()"
       (appOnCreateCheck)="validateItem(item)"
     >
-      <mat-card-header>
+      <div class="mat-card-header">
         <div
           mat-card-avatar
           class="header-image"
-          style="background-image: url({{ item.picture }});"
+          style="background-image: url({{item.picture}});"
         ></div>
-        <mat-card-title>
-          {{ item.name }}
-          <mat-card-subtitle class="item-id">
-            {{ item.id }}
+        <div class="contents">
+          <mat-card-title>
+            {{ item.name }}
+            <span class="item-id">
+              {{ item.id }}
+            </span>
+          </mat-card-title>
+          <mat-card-subtitle>
+            {{ cutAddress(item.address) }}
           </mat-card-subtitle>
-        </mat-card-title>
-        <mat-card-subtitle>
-          {{ cutAddress(item.address) }}
-        </mat-card-subtitle>
-      </mat-card-header>
+        </div>
+      </div>
     </mat-card>
   </mat-list-item>
 </mat-list>
