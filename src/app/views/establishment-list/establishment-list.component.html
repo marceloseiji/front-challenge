@@ -1,11 +1,28 @@
 <mat-list role="list" class="container">
-  <mat-list-item role="listitem" *ngFor="let item of establishments_getted$ | async">
+  <mat-list-item
+    role="listitem"
+    *ngFor="let item of establishments_getted$ | async"
+  >
     <!--Chama a função deste componente(establishment-list.component) -->
-    <mat-card (click)="sendInfos(item)" (appOnCreateCheck)="validateItem(item)">
+    <mat-card
+      (click)="sendInfos(item); showHide()"
+      (appOnCreateCheck)="validateItem(item)"
+    >
       <mat-card-header>
-        <div mat-card-avatar class="header-image" style="background-image: url({{item.picture}});"></div>
-        <mat-card-title>{{ item.name }}<mat-card-subtitle class="item-id">{{ item.id }}</mat-card-subtitle></mat-card-title>
-        <mat-card-subtitle>{{ cutAddress(item.address) }}</mat-card-subtitle>
+        <div
+          mat-card-avatar
+          class="header-image"
+          style="background-image: url({{ item.picture }});"
+        ></div>
+        <mat-card-title>
+          {{ item.name }}
+          <mat-card-subtitle class="item-id">
+            {{ item.id }}
+          </mat-card-subtitle>
+        </mat-card-title>
+        <mat-card-subtitle>
+          {{ cutAddress(item.address) }}
+        </mat-card-subtitle>
       </mat-card-header>
     </mat-card>
   </mat-list-item>

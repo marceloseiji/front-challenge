@@ -3,6 +3,7 @@
 <div class="infos-form container">
   <div class="form-body">
     <mat-card>
+      <button (click)="showHide()">Button</button>
       <mat-card-header>
         <div
           mat-card-avatar
@@ -121,12 +122,13 @@
 
     <button
       disabled
-      (click)="changeEstablishment()"
+      (click)="changeEstablishment(); showHide(); openSnackBar('Alterações salvas', 'x')"
       id="sendSubmit"
       class="submit-button disabled"
       mat-flat-button
     >
       Salvar
     </button>
+
   </div>
 </div>

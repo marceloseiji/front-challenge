@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { ResponseEstablishment } from 'src/app/shared/model/responseEstablishment.model';
 import { EstablishmentService } from '../../shared/service/establishment.service';
 import { LocalStorageService } from 'ngx-webstorage';
+import { HomeComponent } from '../home/home.component'
 @Component({
   selector: 'app-establishment-list',
   templateUrl: './establishment-list.component.html',
@@ -23,7 +24,11 @@ export class EstablishmentListComponent implements OnInit {
   constructor(
     private establishmentService: EstablishmentService,
     private storage:LocalStorageService,
+    public homeComponent: HomeComponent
   ) {}
+
+  //Função do home.component.ts
+  showHide = this.homeComponent.showHide;
 
   ngOnInit(): void {
     this.getEstablishments();
@@ -55,8 +60,6 @@ export class EstablishmentListComponent implements OnInit {
     this.retrievedItem = this.storage.retrieve('Establishment Item' + item.id);
 
     if(this.retrievedItem) {
-      console.log(this.retrievedItem);
-
       item.name = this.retrievedItem.name;
       item.address = this.retrievedItem.address;
     }

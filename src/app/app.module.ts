@@ -21,6 +21,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { FormsModule } from '@angular/forms';
 import { OnCreateCheckDirective } from './shared/directives/on-create-check.directive';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { OnCreateCheckDirective } from './shared/directives/on-create-check.dire
     MatButtonModule,
     NgxWebstorageModule.forRoot(),
     FormsModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent],

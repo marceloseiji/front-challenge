@@ -2,13 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { EstablishmentService } from '../../shared/service/establishment.service';
 import { ResponseEstablishment } from '../../shared/model/responseEstablishment.model';
 import { LocalStorageService } from 'ngx-webstorage';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { HomeComponent } from '../home/home.component'
 
 @Component({
   selector: 'app-infos-form',
   templateUrl: './infos-form.component.html',
   styleUrls: ['./infos-form.component.scss'],
 })
+
 export class InfosFormComponent implements OnInit {
+
+  constructor(
+    private establishmentService: EstablishmentService,
+    private storage: LocalStorageService,
+    private snackBar: MatSnackBar,
+    public homeComponent: HomeComponent
+  ) { }
 
   //Item original recebido
   itemReceived: ResponseEstablishment = {
@@ -57,10 +67,12 @@ export class InfosFormComponent implements OnInit {
     {tipo: 'Não'}
   ];
 
-  constructor(
-    private establishmentService: EstablishmentService,
-    private storage:LocalStorageService,
-  ) { }
+  //Função do home.component.ts
+  showHide = this.homeComponent.showHide;
+
+  openSnackBar(message, action) {
+    this.snackBar.open(message, action, {duration: 1000});
+  }
 
   public changeEstablishment() {
     const newAddress = `${this.otherInfos.$street},${this.otherInfos.$city},${this.otherInfos.$state},${this.otherInfos.$zipCode},
