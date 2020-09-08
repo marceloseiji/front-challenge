@@ -5,6 +5,18 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Existe um deploy já feito deste projeto no link:
    https://marceloseiji.github.io/front-challenge/
 
+## Rodar o projeto em develop
+1) Faça o download do projeto e abra-o em sua ide.
+2) Use o comando para atualizar as dependências do package.json
+   npm-update
+
+3) Coloque o projeto para rodar com o comando
+   ng serve
+
+4) Abra o local host, normalmente é:
+  http://localhost:4200/
+
+5) Caso não seja o local host correto deve aparecer no console após usar o comando ng serve
 
 ## Deploy to github pages
 
