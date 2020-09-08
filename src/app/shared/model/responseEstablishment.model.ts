@@ -10,4 +10,12 @@ export class ResponseEstablishment {
   phone: string;
   picture: string;
   registered: string;
+  banco: string;
+  agencia: string;
+  contaDigito: string;
+  agenciaDigito: string;
+  contaNumero: string;
+  saqueAutomatico: string;
+  tipoConta: string;
+  cpfCnpj: string;
 }

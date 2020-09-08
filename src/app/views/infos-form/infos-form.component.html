@@ -4,9 +4,7 @@
   <div class="form-body">
     <mat-card>
       <div class="back-btn" (click)="showHide()">
-        <span class="material-icons">
-          keyboard_backspace
-        </span>
+        <span class="material-icons"> keyboard_backspace </span>
       </div>
       <div class="mat-card-header">
         <div
@@ -82,31 +80,54 @@
 
     <mat-form-field appearance="outline" color="primary" class="w33">
       <mat-label>Banco</mat-label>
-      <mat-select [(ngModel)]="otherInfos.$banco">
-        <mat-option *ngFor="let banco of $bancos" value="{{banco.nome}}">{{banco.nome}}</mat-option>
+      <mat-select [(ngModel)]="itemReceived.banco" [(value)]="bancoSelected">
+        <mat-option
+          *ngFor="let banco of $bancos"
+          value="{{ banco.nome }}"
+          >{{ banco.nome }}</mat-option
+        >
       </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="outline" color="primary" class="w33">
       <mat-label>Tipo de conta</mat-label>
-      <mat-select [(ngModel)]="otherInfos.$tipoConta">
-        <mat-option *ngFor="let conta of $contas" value="{{conta.tipo}}">{{conta.tipo}}</mat-option>
+      <mat-select [(ngModel)]="itemReceived.tipoConta" [(value)]="contaSelected">
+        <mat-option *ngFor="let conta of $contas" value="{{ conta.tipo }}">{{
+          conta.tipo
+        }}</mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="outline" color="primary" class="w33">
       <mat-label>CPF/CNPJ</mat-label>
-      <input [(ngModel)]="otherInfos.$cpfCnpj" matInput placeholder="CEP" value="{{otherInfos.$cpfCnpj}" />
+      <input
+        [(ngModel)]="itemReceived.cpfCnpj"
+        matInput
+        placeholder="CEP"
+        value="{{itemReceived.cpfCnpj}"
+      />
     </mat-form-field>
 
     <div class="example-full-width" cellspacing="0" class="w33 double-form">
       <label>Agência</label>
       <div class="conta">
         <mat-form-field appearance="outline" color="primary" class="number">
-          <input [(ngModel)]="otherInfos.$agencia" maxLength="4" matInput placeholder="0000" value="{{otherInfos.$agencia}}" />
+          <input
+            [(ngModel)]="itemReceived.agencia"
+            maxLength="4"
+            matInput
+            placeholder="0000"
+            value="{{ itemReceived.agencia }}"
+          />
         </mat-form-field>
         <mat-form-field appearance="outline" color="primary" class="digit">
-          <input [(ngModel)]="otherInfos.$agenciaDigito" maxLength="1" matInput placeholder="0" value="{{otherInfos.$agenciaDigito}}" />
+          <input
+            [(ngModel)]="itemReceived.agenciaDigito"
+            maxLength="1"
+            matInput
+            placeholder="0"
+            value="{{ itemReceived.agenciaDigito }}"
+          />
         </mat-form-field>
       </div>
     </div>
@@ -115,25 +136,49 @@
       <label>Conta</label>
       <div class="conta">
         <mat-form-field appearance="outline" color="primary" class="number">
-          <input [(ngModel)]="otherInfos.$contaNumero" maxLength="4" matInput placeholder="0000" value="{{otherInfos.$contaNumero}}" />
+          <input
+            [(ngModel)]="itemReceived.contaNumero"
+            maxLength="4"
+            matInput
+            placeholder="0000"
+            value="{{ itemReceived.contaNumero }}"
+          />
         </mat-form-field>
         <mat-form-field appearance="outline" color="primary" class="digit">
-          <input [(ngModel)]="otherInfos.$contaDigito" maxLength="1" matInput placeholder="0" value="{{otherInfos.$contaDigito}}" />
+          <input
+            [(ngModel)]="itemReceived.contaDigito"
+            maxLength="1"
+            matInput
+            placeholder="0"
+            value="{{ itemReceived.contaDigito }}"
+          />
         </mat-form-field>
       </div>
     </div>
 
-    <mat-form-field appearance="outline" color="primary" class="w33 double-form">
+    <mat-form-field
+      appearance="outline"
+      color="primary"
+      class="w33 double-form"
+    >
       <mat-label>Saque automático</mat-label>
-      <mat-select [(ngModel)]="otherInfos.$saqueAutomatico">
-        <mat-option *ngFor="let opcao of $saqueOpcoes" value="{{opcao.tipo}}">{{opcao.tipo}}</mat-option>
+      <mat-select [(ngModel)]="itemReceived.saqueAutomatico">
+        <mat-option
+          *ngFor="let opcao of $saqueOpcoes"
+          value="{{ opcao.tipo }}"
+          >{{ opcao.tipo }}</mat-option
+        >
       </mat-select>
     </mat-form-field>
 
     <div class="btn-holder">
       <button
         disabled
-        (click)="changeEstablishment(); showHide(); openSnackBar('Alterações salvas', 'x')"
+        (click)="
+          changeEstablishment();
+          showHide();
+          openSnackBar('Alterações salvas', 'x')
+        "
         id="sendSubmit"
         class="submit-button"
         mat-flat-button
@@ -141,6 +186,5 @@
         Salvar
       </button>
     </div>
-
   </div>
 </div>

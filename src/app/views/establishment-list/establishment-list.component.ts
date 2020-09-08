@@ -41,7 +41,13 @@ export class EstablishmentListComponent implements OnInit {
 
   //Usa a função showInfos do serviço establihsment.service e envia o item recebido do componente
   sendInfos(item) {
-    this.establishmentService.showInfos(item);
+    this.retrievedItem = this.storage.retrieve('Establishment Item' + item.id);
+
+    if(this.retrievedItem) {
+      this.establishmentService.showInfos(this.retrievedItem);
+    } else {
+      this.establishmentService.showInfos(item);
+    }
   }
 
   cutAddress(address) {

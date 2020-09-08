@@ -32,7 +32,15 @@ export class InfosFormComponent implements OnInit {
     name: "",
     phone: "",
     picture: "",
-    registered: ""
+    registered: "",
+    banco: "",
+    agencia: "",
+    contaDigito: "",
+    contaNumero: "",
+    saqueAutomatico: "",
+    tipoConta: "",
+    agenciaDigito: "",
+    cpfCnpj: ""
   };
 
   //Informações adicionais do item recebido
@@ -40,16 +48,12 @@ export class InfosFormComponent implements OnInit {
     $street: "",
     $city: "",
     $state: "",
-    $zipCode: "",
-    $banco: "",
-    $tipoConta: "",
-    $cpfCnpj: "",
-    $agencia: "",
-    $agenciaDigito: "",
-    $contaNumero: "",
-    $contaDigito: "",
-    $saqueAutomatico: "",
+    $zipCode: ""
   }
+
+  bancoSelected;
+  contaSelected;
+  saqueAutomatico;
 
   $bancos = [
     {nome: 'Banco do Brasil'},
@@ -82,14 +86,15 @@ export class InfosFormComponent implements OnInit {
       address: newAddress,
       id: this.itemReceived.id,
       name: this.itemReceived.name,
-      banco: this.otherInfos.$banco,
-      tipoConta: this.otherInfos.$tipoConta,
-      cpfCnpj: this.otherInfos.$cpfCnpj,
-      agencia: this.otherInfos.$agencia,
-      agenciaDigito: this.otherInfos.$agenciaDigito,
-      contaNumero: this.otherInfos.$contaNumero,
-      contaDigito: this.otherInfos.$contaDigito,
-      saqueAutomatico: this.otherInfos.$saqueAutomatico
+      picture: this.itemReceived.picture,
+      banco: this.itemReceived.banco,
+      tipoConta: this.itemReceived.tipoConta,
+      cpfCnpj: this.itemReceived.cpfCnpj,
+      agencia: this.itemReceived.agencia,
+      agenciaDigito: this.itemReceived.agenciaDigito,
+      contaNumero: this.itemReceived.contaNumero,
+      contaDigito: this.itemReceived.contaDigito,
+      saqueAutomatico: this.itemReceived.saqueAutomatico
     }
     this.storage.store('Establishment Item' + updatedItem.id, updatedItem);
     console.log("Novo item: ", updatedItem);
@@ -99,6 +104,10 @@ export class InfosFormComponent implements OnInit {
     //item recebido do establishment.service itemSend que é um Subject
     this.establishmentService.itemSend.subscribe(item => {
       this.itemReceived = item
+      this.itemReceived.contaNumero = item.contaNumero;
+
+      this.bancoSelected = item.banco;
+      this.contaSelected = item.tipoConta;
 
       const cut = this.itemReceived.address.split(",");
 
