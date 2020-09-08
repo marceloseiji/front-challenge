@@ -3,22 +3,28 @@
 <div class="infos-form container">
   <div class="form-body">
     <mat-card>
-      <button (click)="showHide()">Button</button>
-      <mat-card-header>
+      <div class="back-btn" (click)="showHide()">
+        <span class="material-icons">
+          keyboard_backspace
+        </span>
+      </div>
+      <div class="mat-card-header">
         <div
           mat-card-avatar
           class="header-image"
           style="background-image: url({{itemReceived.picture}})"
         ></div>
-        <mat-card-title>{{ itemReceived.name }}</mat-card-title>
-        <mat-card-subtitle>{{ itemReceived.id }}</mat-card-subtitle>
-      </mat-card-header>
+        <div class="text-contents">
+          <mat-card-title>{{ itemReceived.name }}</mat-card-title>
+          <mat-card-subtitle>ID: {{ itemReceived.id }}</mat-card-subtitle>
+        </div>
+      </div>
     </mat-card>
 
-    <mat-list-item>Informações básicas</mat-list-item>
+    <p class="section-title">Informações básicas</p>
     <mat-divider></mat-divider>
 
-    <mat-form-field appearance="outline" color="primary">
+    <mat-form-field appearance="outline" color="primary" class="w50">
       <mat-label>Nome</mat-label>
       <input
         matInput
@@ -28,20 +34,7 @@
       />
     </mat-form-field>
 
-    <mat-list-item>Endereço</mat-list-item>
-    <mat-divider></mat-divider>
-
-    <mat-form-field appearance="outline" color="primary">
-      <mat-label>Estado</mat-label>
-      <input
-        matInput
-        placeholder="Estado"
-        [(ngModel)]="otherInfos.$state"
-        value="{{ otherInfos.$state }}"
-      />
-    </mat-form-field>
-
-    <mat-form-field appearance="outline" color="primary">
+    <mat-form-field appearance="outline" color="primary" class="w50">
       <mat-label>Cidade</mat-label>
       <input
         matInput
@@ -51,7 +44,20 @@
       />
     </mat-form-field>
 
-    <mat-form-field appearance="outline" color="primary">
+    <mat-list-item>Endereço</mat-list-item>
+    <mat-divider></mat-divider>
+
+    <mat-form-field appearance="outline" color="primary" class="w33">
+      <mat-label>Estado</mat-label>
+      <input
+        matInput
+        placeholder="Estado"
+        [(ngModel)]="otherInfos.$state"
+        value="{{ otherInfos.$state }}"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" color="primary" class="w33">
       <mat-label>Logradouro</mat-label>
       <input
         matInput
@@ -61,7 +67,7 @@
       />
     </mat-form-field>
 
-    <mat-form-field appearance="outline" color="primary">
+    <mat-form-field appearance="outline" color="primary" class="w33">
       <mat-label>CEP</mat-label>
       <input
         matInput
@@ -74,46 +80,50 @@
     <mat-list-item>Financeiro</mat-list-item>
     <mat-divider></mat-divider>
 
-    <mat-form-field appearance="outline" color="primary">
+    <mat-form-field appearance="outline" color="primary" class="w33">
       <mat-label>Banco</mat-label>
       <mat-select [(ngModel)]="otherInfos.$banco">
         <mat-option *ngFor="let banco of $bancos" value="{{banco.nome}}">{{banco.nome}}</mat-option>
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field appearance="outline" color="primary">
+    <mat-form-field appearance="outline" color="primary" class="w33">
       <mat-label>Tipo de conta</mat-label>
       <mat-select [(ngModel)]="otherInfos.$tipoConta">
         <mat-option *ngFor="let conta of $contas" value="{{conta.tipo}}">{{conta.tipo}}</mat-option>
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field appearance="outline" color="primary">
+    <mat-form-field appearance="outline" color="primary" class="w33">
       <mat-label>CPF/CNPJ</mat-label>
       <input [(ngModel)]="otherInfos.$cpfCnpj" matInput placeholder="CEP" value="{{otherInfos.$cpfCnpj}" />
     </mat-form-field>
 
-    <div class="example-full-width" cellspacing="0">
+    <div class="example-full-width" cellspacing="0" class="w33 double-form">
       <label>Agência</label>
-      <mat-form-field appearance="outline" color="primary">
-        <input [(ngModel)]="otherInfos.$agencia" maxLength="4" matInput placeholder="0000" value="{{otherInfos.$agencia}}" />
-      </mat-form-field>
-      <mat-form-field appearance="outline" color="primary">
-        <input [(ngModel)]="otherInfos.$agenciaDigito" maxLength="1" matInput placeholder="0" value="{{otherInfos.$agenciaDigito}}" />
-      </mat-form-field>
+      <div class="conta">
+        <mat-form-field appearance="outline" color="primary" class="number">
+          <input [(ngModel)]="otherInfos.$agencia" maxLength="4" matInput placeholder="0000" value="{{otherInfos.$agencia}}" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" color="primary" class="digit">
+          <input [(ngModel)]="otherInfos.$agenciaDigito" maxLength="1" matInput placeholder="0" value="{{otherInfos.$agenciaDigito}}" />
+        </mat-form-field>
+      </div>
     </div>
 
-    <div class="example-full-width" cellspacing="0">
+    <div class="example-full-width" cellspacing="0" class="w33 double-form">
       <label>Conta</label>
-      <mat-form-field appearance="outline" color="primary">
-        <input [(ngModel)]="otherInfos.$contaNumero" maxLength="4" matInput placeholder="0000" value="{{otherInfos.$contaNumero}}" />
-      </mat-form-field>
-      <mat-form-field appearance="outline" color="primary">
-        <input [(ngModel)]="otherInfos.$contaDigito" maxLength="1" matInput placeholder="0" value="{{otherInfos.$contaDigito}}" />
-      </mat-form-field>
+      <div class="conta">
+        <mat-form-field appearance="outline" color="primary" class="number">
+          <input [(ngModel)]="otherInfos.$contaNumero" maxLength="4" matInput placeholder="0000" value="{{otherInfos.$contaNumero}}" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" color="primary" class="digit">
+          <input [(ngModel)]="otherInfos.$contaDigito" maxLength="1" matInput placeholder="0" value="{{otherInfos.$contaDigito}}" />
+        </mat-form-field>
+      </div>
     </div>
 
-    <mat-form-field appearance="outline" color="primary">
+    <mat-form-field appearance="outline" color="primary" class="w33 double-form">
       <mat-label>Saque automático</mat-label>
       <mat-select [(ngModel)]="otherInfos.$saqueAutomatico">
         <mat-option *ngFor="let opcao of $saqueOpcoes" value="{{opcao.tipo}}">{{opcao.tipo}}</mat-option>

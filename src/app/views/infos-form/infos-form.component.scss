@@ -1,25 +1,121 @@
 @import "../../../styles.scss";
 
+.w33 {
+  width: 30.3%;
+  @media (max-width: 1066px) {
+    width: 97%;
+  }
+}
+
+.w25 {
+  width: 22%;
+  @media (max-width: 1066px) {
+    width: 97%;
+  }
+}
+
+.w50 {
+  width: 47%;
+  @media (max-width: 1066px) {
+    width: 97%;
+  }
+}
+
+.w100 {
+  width: 97%;
+}
+
+.double-form {
+  display: inline-block;
+  margin: 0 10px;
+  label {
+    margin-left: 12px;
+    display: block;
+  }
+  .conta {
+    display: flex;
+    flex-direction: row;
+    .number {
+      width: 80%;
+    }
+    .digit {
+      margin: 0 !important;
+      width: 20%;
+    }
+  }
+  .mat-form-field {
+    margin: 0 !important;
+  }
+}
+
 .infos-form {
   display: block;
   .form-body {
     margin: 0 16px;
     border-radius: 3px;
     background-color: $white;
-    padding: 7px;
+    padding: 10px 20px;
+    .mat-card {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      box-shadow: none;
+      background-color: $white;
+      margin-bottom: 25px;
+      .back-btn {
+        width: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        cursor: pointer;
+      }
+      .mat-card-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .mat-card-avatar {
+          border-radius: 2px;
+          height: 80px;
+          width: 80px;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+        .text-contents {
+          display: flex;
+          flex-direction: column;
+          margin-left: 15px;
+          .mat-card.title {
+            margin: 0;
+          }
+          .mat-card-subtitle {
+            margin: 0;
+          }
+        }
+      }
+    }
+    .mat-form-field {
+      margin: 0 10px;
+    }
   }
   .submit-button {
     background-color: #1eda60;
     color: $white;
     border-radius: 25px;
     padding: 5px 30px;
-    transition: .5s ease;
+    transition: 0.5s ease;
     &:hover {
       cursor: pointer;
     }
   }
-
   .submit-button.disabled {
     background-color: #96dbaf;
+  }
+  .mat-list-item {
+    .mat-list-item-content {
+      font-size: 16px;
+    }
+  }
+  .mat-divider {
+    margin: 20px 0;
   }
 }
