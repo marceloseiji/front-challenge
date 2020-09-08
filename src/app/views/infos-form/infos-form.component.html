@@ -10,7 +10,7 @@
         <div
           mat-card-avatar
           class="header-image"
-          style="background-image: url({{itemReceived.picture}})"
+          style="background-image: url({{ itemReceived.picture }})"
         ></div>
         <div class="text-contents">
           <mat-card-title>{{ itemReceived.name }}</mat-card-title>
@@ -22,154 +22,163 @@
     <p class="section-title">Informações básicas</p>
     <mat-divider></mat-divider>
 
-    <mat-form-field appearance="outline" color="primary" class="w50">
-      <mat-label>Nome</mat-label>
-      <input
-        matInput
-        placeholder="Nome"
-        [(ngModel)]="itemReceived.name"
-        value="{{ itemReceived.name }}"
-      />
-    </mat-form-field>
+    <div class="input-holder">
+      <mat-form-field appearance="outline" color="primary" class="w50">
+        <mat-label>Nome</mat-label>
+        <input
+          matInput
+          placeholder="Nome"
+          [(ngModel)]="itemReceived.name"
+          value="{{ itemReceived.name }}"
+        />
+      </mat-form-field>
 
-    <mat-form-field appearance="outline" color="primary" class="w50">
-      <mat-label>Cidade</mat-label>
-      <input
-        matInput
-        placeholder="Cidade"
-        [(ngModel)]="otherInfos.$city"
-        value="{{ otherInfos.$city }}"
-      />
-    </mat-form-field>
+      <mat-form-field appearance="outline" color="primary" class="w50">
+        <mat-label>Cidade</mat-label>
+        <input
+          matInput
+          placeholder="Cidade"
+          [(ngModel)]="otherInfos.$city"
+          value="{{ otherInfos.$city }}"
+        />
+      </mat-form-field>
+    </div>
 
     <mat-list-item>Endereço</mat-list-item>
     <mat-divider></mat-divider>
 
-    <mat-form-field appearance="outline" color="primary" class="w33">
-      <mat-label>Estado</mat-label>
-      <input
-        matInput
-        placeholder="Estado"
-        [(ngModel)]="otherInfos.$state"
-        value="{{ otherInfos.$state }}"
-      />
-    </mat-form-field>
+    <div class="input-holder">
+      <mat-form-field appearance="outline" color="primary" class="w33">
+        <mat-label>Estado</mat-label>
+        <input
+          matInput
+          placeholder="Estado"
+          [(ngModel)]="otherInfos.$state"
+          value="{{ otherInfos.$state }}"
+        />
+      </mat-form-field>
 
-    <mat-form-field appearance="outline" color="primary" class="w33">
-      <mat-label>Logradouro</mat-label>
-      <input
-        matInput
-        placeholder="EnderLogradouroeço"
-        [(ngModel)]="otherInfos.$street"
-        value="{{ otherInfos.$street }}"
-      />
-    </mat-form-field>
+      <mat-form-field appearance="outline" color="primary" class="w33">
+        <mat-label>Logradouro</mat-label>
+        <input
+          matInput
+          placeholder="EnderLogradouroeço"
+          [(ngModel)]="otherInfos.$street"
+          value="{{ otherInfos.$street }}"
+        />
+      </mat-form-field>
 
-    <mat-form-field appearance="outline" color="primary" class="w33">
-      <mat-label>CEP</mat-label>
-      <input
-        matInput
-        placeholder="CEP"
-        [(ngModel)]="otherInfos.$zipCode"
-        value="{{ otherInfos.$zipCode }}"
-      />
-    </mat-form-field>
+      <mat-form-field appearance="outline" color="primary" class="w33">
+        <mat-label>CEP</mat-label>
+        <input
+          matInput
+          placeholder="CEP"
+          [(ngModel)]="otherInfos.$zipCode"
+          value="{{ otherInfos.$zipCode }}"
+        />
+      </mat-form-field>
+    </div>
 
     <mat-list-item>Financeiro</mat-list-item>
     <mat-divider></mat-divider>
 
-    <mat-form-field appearance="outline" color="primary" class="w33">
-      <mat-label>Banco</mat-label>
-      <mat-select [(ngModel)]="itemReceived.banco" [(value)]="bancoSelected">
-        <mat-option
-          *ngFor="let banco of $bancos"
-          value="{{ banco.nome }}"
-          >{{ banco.nome }}</mat-option
+    <div class="input-holder">
+      <mat-form-field appearance="outline" color="primary" class="w33">
+        <mat-label>Banco</mat-label>
+        <mat-select [(ngModel)]="itemReceived.banco" [(value)]="bancoSelected">
+          <mat-option 
+          *ngFor="let banco of $bancos" 
+          value="{{ banco.nome }}">
+          {{ banco.nome }}
+        </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" color="primary" class="w33">
+        <mat-label>Tipo de conta</mat-label>
+        <mat-select
+          [(ngModel)]="itemReceived.tipoConta"
+          [(value)]="contaSelected"
         >
-      </mat-select>
-    </mat-form-field>
+          <mat-option *ngFor="let conta of $contas" value="{{ conta.tipo }}">{{
+            conta.tipo
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-    <mat-form-field appearance="outline" color="primary" class="w33">
-      <mat-label>Tipo de conta</mat-label>
-      <mat-select [(ngModel)]="itemReceived.tipoConta" [(value)]="contaSelected">
-        <mat-option *ngFor="let conta of $contas" value="{{ conta.tipo }}">{{
-          conta.tipo
-        }}</mat-option>
-      </mat-select>
-    </mat-form-field>
+      <mat-form-field appearance="outline" color="primary" class="w33">
+        <mat-label>CPF/CNPJ</mat-label>
+        <input
+          [(ngModel)]="itemReceived.cpfCnpj"
+          matInput
+          placeholder="CEP"
+          value="{{itemReceived.cpfCnpj}"
+        />
+      </mat-form-field>
 
-    <mat-form-field appearance="outline" color="primary" class="w33">
-      <mat-label>CPF/CNPJ</mat-label>
-      <input
-        [(ngModel)]="itemReceived.cpfCnpj"
-        matInput
-        placeholder="CEP"
-        value="{{itemReceived.cpfCnpj}"
-      />
-    </mat-form-field>
-
-    <div class="example-full-width" cellspacing="0" class="w33 double-form">
-      <label>Agência</label>
-      <div class="conta">
-        <mat-form-field appearance="outline" color="primary" class="number">
-          <input
-            [(ngModel)]="itemReceived.agencia"
-            maxLength="4"
-            matInput
-            placeholder="0000"
-            value="{{ itemReceived.agencia }}"
-          />
-        </mat-form-field>
-        <mat-form-field appearance="outline" color="primary" class="digit">
-          <input
-            [(ngModel)]="itemReceived.agenciaDigito"
-            maxLength="1"
-            matInput
-            placeholder="0"
-            value="{{ itemReceived.agenciaDigito }}"
-          />
-        </mat-form-field>
+      <div class="example-full-width" cellspacing="0" class="w33 double-form">
+        <label>Agência</label>
+        <div class="conta">
+          <mat-form-field appearance="outline" color="primary" class="number">
+            <input
+              [(ngModel)]="itemReceived.agencia"
+              maxLength="4"
+              matInput
+              placeholder="0000"
+              value="{{ itemReceived.agencia }}"
+            />
+          </mat-form-field>
+          <mat-form-field appearance="outline" color="primary" class="digit">
+            <input
+              [(ngModel)]="itemReceived.agenciaDigito"
+              maxLength="1"
+              matInput
+              placeholder="0"
+              value="{{ itemReceived.agenciaDigito }}"
+            />
+          </mat-form-field>
+        </div>
       </div>
-    </div>
 
-    <div class="example-full-width" cellspacing="0" class="w33 double-form">
-      <label>Conta</label>
-      <div class="conta">
-        <mat-form-field appearance="outline" color="primary" class="number">
-          <input
-            [(ngModel)]="itemReceived.contaNumero"
-            maxLength="4"
-            matInput
-            placeholder="0000"
-            value="{{ itemReceived.contaNumero }}"
-          />
-        </mat-form-field>
-        <mat-form-field appearance="outline" color="primary" class="digit">
-          <input
-            [(ngModel)]="itemReceived.contaDigito"
-            maxLength="1"
-            matInput
-            placeholder="0"
-            value="{{ itemReceived.contaDigito }}"
-          />
-        </mat-form-field>
+      <div class="example-full-width" cellspacing="0" class="w33 double-form">
+        <label>Conta</label>
+        <div class="conta">
+          <mat-form-field appearance="outline" color="primary" class="number">
+            <input
+              [(ngModel)]="itemReceived.contaNumero"
+              maxLength="4"
+              matInput
+              placeholder="0000"
+              value="{{ itemReceived.contaNumero }}"
+            />
+          </mat-form-field>
+          <mat-form-field appearance="outline" color="primary" class="digit">
+            <input
+              [(ngModel)]="itemReceived.contaDigito"
+              maxLength="1"
+              matInput
+              placeholder="0"
+              value="{{ itemReceived.contaDigito }}"
+            />
+          </mat-form-field>
+        </div>
       </div>
-    </div>
 
-    <mat-form-field
-      appearance="outline"
-      color="primary"
-      class="w33 double-form"
-    >
-      <mat-label>Saque automático</mat-label>
-      <mat-select [(ngModel)]="itemReceived.saqueAutomatico">
-        <mat-option
-          *ngFor="let opcao of $saqueOpcoes"
-          value="{{ opcao.tipo }}"
-          >{{ opcao.tipo }}</mat-option
-        >
-      </mat-select>
-    </mat-form-field>
+      <mat-form-field
+        appearance="outline"
+        color="primary"
+        class="w33 double-form"
+      >
+        <mat-label>Saque automático</mat-label>
+        <mat-select [(ngModel)]="itemReceived.saqueAutomatico">
+          <mat-option
+            *ngFor="let opcao of $saqueOpcoes"
+            value="{{ opcao.tipo }}"
+            >{{ opcao.tipo }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
 
     <div class="btn-holder">
       <button
