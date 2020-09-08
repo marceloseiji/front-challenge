@@ -1,4 +1,6 @@
-<mat-list role="list" class="container">
+<mat-list
+  role="list" 
+  class="container">
   <mat-list-item
     role="listitem"
     *ngFor="let item of establishments_getted$ | async"
@@ -12,7 +14,7 @@
         <div
           mat-card-avatar
           class="header-image"
-          style="background-image: url({{ item.picture }});"
+          style="background-image: url({{item.picture}});"
         ></div>
         <div class="contents">
           <mat-card-title>

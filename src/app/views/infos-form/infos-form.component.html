@@ -3,14 +3,14 @@
 <div class="infos-form container">
   <div class="form-body">
     <mat-card>
-      <div class="back-btn" (click)="showHide()">
+      <div class="back-btn" (click)="reload()">
         <span class="material-icons"> keyboard_backspace </span>
       </div>
       <div class="mat-card-header">
         <div
           mat-card-avatar
           class="header-image"
-          style="background-image: url({{ itemReceived.picture }})"
+          style="background-image: url({{itemReceived.picture}})"
         ></div>
         <div class="text-contents">
           <mat-card-title>{{ itemReceived.name }}</mat-card-title>
@@ -28,7 +28,7 @@
         <input
           matInput
           placeholder="Nome"
-          [(ngModel)]="itemReceived.name"
+          [(ngModel)]="itemToUpdate.name"
           value="{{ itemReceived.name }}"
         />
       </mat-form-field>
@@ -38,8 +38,8 @@
         <input
           matInput
           placeholder="Cidade"
-          [(ngModel)]="otherInfos.$city"
-          value="{{ otherInfos.$city }}"
+          [(ngModel)]="adressInfos.$city"
+          value="{{ adressInfos.$city }}"
         />
       </mat-form-field>
     </div>
@@ -53,8 +53,8 @@
         <input
           matInput
           placeholder="Estado"
-          [(ngModel)]="otherInfos.$state"
-          value="{{ otherInfos.$state }}"
+          [(ngModel)]="adressInfos.$state"
+          value="{{ adressInfos.$state }}"
         />
       </mat-form-field>
 
@@ -63,8 +63,8 @@
         <input
           matInput
           placeholder="EnderLogradouroeço"
-          [(ngModel)]="otherInfos.$street"
-          value="{{ otherInfos.$street }}"
+          [(ngModel)]="adressInfos.$street"
+          value="{{ adressInfos.$street }}"
         />
       </mat-form-field>
 
@@ -73,8 +73,8 @@
         <input
           matInput
           placeholder="CEP"
-          [(ngModel)]="otherInfos.$zipCode"
-          value="{{ otherInfos.$zipCode }}"
+          [(ngModel)]="adressInfos.$zipCode"
+          value="{{ adressInfos.$zipCode }}"
         />
       </mat-form-field>
     </div>
@@ -85,19 +85,19 @@
     <div class="input-holder">
       <mat-form-field appearance="outline" color="primary" class="w33">
         <mat-label>Banco</mat-label>
-        <mat-select [(ngModel)]="itemReceived.banco" [(value)]="bancoSelected">
+        <mat-select [(ngModel)]="itemToUpdate.banco" [(value)]="bancoSelected">
           <mat-option 
-          *ngFor="let banco of $bancos" 
-          value="{{ banco.nome }}">
-          {{ banco.nome }}
-        </mat-option>
+            *ngFor="let banco of $bancos" 
+            value="{{ banco.nome }}">
+            {{ banco.nome }}
+          </mat-option>
         </mat-select>
       </mat-form-field>
 
       <mat-form-field appearance="outline" color="primary" class="w33">
         <mat-label>Tipo de conta</mat-label>
         <mat-select
-          [(ngModel)]="itemReceived.tipoConta"
+          [(ngModel)]="itemToUpdate.tipoConta"
           [(value)]="contaSelected"
         >
           <mat-option *ngFor="let conta of $contas" value="{{ conta.tipo }}">{{
@@ -109,7 +109,7 @@
       <mat-form-field appearance="outline" color="primary" class="w33">
         <mat-label>CPF/CNPJ</mat-label>
         <input
-          [(ngModel)]="itemReceived.cpfCnpj"
+          [(ngModel)]="itemToUpdate.cpfCnpj"
           matInput
           placeholder="CEP"
           value="{{itemReceived.cpfCnpj}"
@@ -121,7 +121,7 @@
         <div class="conta">
           <mat-form-field appearance="outline" color="primary" class="number">
             <input
-              [(ngModel)]="itemReceived.agencia"
+              [(ngModel)]="itemToUpdate.agencia"
               maxLength="4"
               matInput
               placeholder="0000"
@@ -130,7 +130,7 @@
           </mat-form-field>
           <mat-form-field appearance="outline" color="primary" class="digit">
             <input
-              [(ngModel)]="itemReceived.agenciaDigito"
+              [(ngModel)]="itemToUpdate.agenciaDigito"
               maxLength="1"
               matInput
               placeholder="0"
@@ -145,7 +145,7 @@
         <div class="conta">
           <mat-form-field appearance="outline" color="primary" class="number">
             <input
-              [(ngModel)]="itemReceived.contaNumero"
+              [(ngModel)]="itemToUpdate.contaNumero"
               maxLength="4"
               matInput
               placeholder="0000"
@@ -154,7 +154,7 @@
           </mat-form-field>
           <mat-form-field appearance="outline" color="primary" class="digit">
             <input
-              [(ngModel)]="itemReceived.contaDigito"
+              [(ngModel)]="itemToUpdate.contaDigito"
               maxLength="1"
               matInput
               placeholder="0"
@@ -170,7 +170,7 @@
         class="w33 double-form"
       >
         <mat-label>Saque automático</mat-label>
-        <mat-select [(ngModel)]="itemReceived.saqueAutomatico">
+        <mat-select [(ngModel)]="itemToUpdate.saqueAutomatico">
           <mat-option
             *ngFor="let opcao of $saqueOpcoes"
             value="{{ opcao.tipo }}"
@@ -183,11 +183,7 @@
     <div class="btn-holder">
       <button
         disabled
-        (click)="
-          changeEstablishment();
-          showHide();
-          openSnackBar('Alterações salvas', 'x')
-        "
+        (click)="changeEstablishment()"
         id="sendSubmit"
         class="submit-button"
         mat-flat-button

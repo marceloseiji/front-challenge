@@ -71,4 +71,9 @@ export class EstablishmentListComponent implements OnInit {
     }
   }
 
+  //Reload do establishmentList
+  reload() {
+    location.reload();
+  }
+
 }

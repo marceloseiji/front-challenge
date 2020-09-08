@@ -3,7 +3,8 @@ import { EstablishmentService } from '../../shared/service/establishment.service
 import { ResponseEstablishment } from '../../shared/model/responseEstablishment.model';
 import { LocalStorageService } from 'ngx-webstorage';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { HomeComponent } from '../home/home.component'
+import { HomeComponent } from '../home/home.component';
+import { EstablishmentListComponent } from '../establishment-list/establishment-list.component';
 
 @Component({
   selector: 'app-infos-form',
@@ -17,7 +18,8 @@ export class InfosFormComponent implements OnInit {
     private establishmentService: EstablishmentService,
     private storage: LocalStorageService,
     private snackBar: MatSnackBar,
-    public homeComponent: HomeComponent
+    public homeComponent: HomeComponent,
+    public establishmentListComponent: EstablishmentListComponent
   ) { }
 
   //Item original recebido
@@ -43,8 +45,31 @@ export class InfosFormComponent implements OnInit {
     cpfCnpj: ""
   };
 
-  //Informações adicionais do item recebido
-  otherInfos = {
+  //Item a receber update
+  itemToUpdate: ResponseEstablishment = {
+    address: "",
+    email: "",
+    guid: "",
+    id: "",
+    index: 0,
+    latitude: "",
+    longitude: "",
+    name: "",
+    phone: "",
+    picture: "",
+    registered: "",
+    banco: "",
+    agencia: "",
+    contaDigito: "",
+    contaNumero: "",
+    saqueAutomatico: "",
+    tipoConta: "",
+    agenciaDigito: "",
+    cpfCnpj: ""
+  };
+
+  //Itens do endereço splitados
+  adressInfos = {
     $street: "",
     $city: "",
     $state: "",
@@ -54,6 +79,8 @@ export class InfosFormComponent implements OnInit {
   bancoSelected;
   contaSelected;
   saqueAutomatico;
+
+  willSave;
 
   $bancos = [
     {nome: 'Banco do Brasil'},
@@ -74,48 +101,74 @@ export class InfosFormComponent implements OnInit {
   //Função do home.component.ts
   showHide = this.homeComponent.showHide;
 
-  openSnackBar(message, action) {
-    this.snackBar.open(message, action, {duration: 1000});
+  //Função do EstablishmentListComponent para atualizar a lista
+  reload = this.establishmentListComponent.reload;
+
+  savedMessage(message, action) {
+    this.snackBar.open(message, action, {duration: 3000});
   }
+  nothingSavedMessage(message, action) {
+    this.snackBar.open(message, action, {duration: 3000});
+  }
+  savedPropsMessage = [];
 
   public changeEstablishment() {
-    const newAddress = `${this.otherInfos.$street},${this.otherInfos.$city},${this.otherInfos.$state},${this.otherInfos.$zipCode},
-    `;
+    //Variável que monta o novo endereço
+    const newAddress =`${this.adressInfos.$street},${this.adressInfos.$city},${this.adressInfos.$state},${this.adressInfos.$zipCode}`;
+    this.itemToUpdate.address = newAddress;
 
-    let updatedItem = {
-      address: newAddress,
-      id: this.itemReceived.id,
-      name: this.itemReceived.name,
-      picture: this.itemReceived.picture,
-      banco: this.itemReceived.banco,
-      tipoConta: this.itemReceived.tipoConta,
-      cpfCnpj: this.itemReceived.cpfCnpj,
-      agencia: this.itemReceived.agencia,
-      agenciaDigito: this.itemReceived.agenciaDigito,
-      contaNumero: this.itemReceived.contaNumero,
-      contaDigito: this.itemReceived.contaDigito,
-      saqueAutomatico: this.itemReceived.saqueAutomatico
+    for (var prop in this.itemReceived) {
+      if (this.itemReceived[prop] != this.itemToUpdate[prop] &&
+          this.itemToUpdate[prop] != "" &&
+          this.itemToUpdate[prop] != undefined
+         ) {
+        this.savedPropsMessage.push([prop]);
+        this.willSave = true;
+      } else {
+        this.itemToUpdate[prop] = this.itemReceived[prop];
+      }
     }
-    this.storage.store('Establishment Item' + updatedItem.id, updatedItem);
-    console.log("Novo item: ", updatedItem);
+
+    if(this.willSave) {
+      this.storage.store('Establishment Item' + this.itemReceived.id, this.itemToUpdate);
+      this.savedMessage("Items salvos: " + this.savedPropsMessage, "x");
+      this.willSave = false;
+      this.savedPropsMessage = [];
+    } else {
+      this.nothingSavedMessage("Nada para salvar", "x");
+      this.willSave = false;
+    }
+    
   }
 
   ngOnInit(): void {
     //item recebido do establishment.service itemSend que é um Subject
     this.establishmentService.itemSend.subscribe(item => {
-      this.itemReceived = item
+      this.itemReceived.address = item.address;
+      this.itemReceived.id = item.id;
+      this.itemReceived.picture = item.picture;
+      this.itemReceived.name = item.name;
+      this.itemReceived.banco = item.banco;
+      this.itemReceived.agencia = item.agencia;
+      this.itemReceived.contaDigito = item.contaDigito;
       this.itemReceived.contaNumero = item.contaNumero;
+      this.itemReceived.saqueAutomatico = item.saqueAutomatico;
+      this.itemReceived.tipoConta = item.tipoConta;
+      this.itemReceived.agenciaDigito = item.agenciaDigito;
+      this.itemReceived.cpfCnpj = item.cpfCnpj;
 
+      //Bind no form
       this.bancoSelected = item.banco;
       this.contaSelected = item.tipoConta;
 
+      //Corta o endereço para salvar em partes
       const cut = this.itemReceived.address.split(",");
 
-      this.otherInfos.$street = cut[0];
-      this.otherInfos.$city = cut[1];
-      this.otherInfos.$state = cut[2];
-      this.otherInfos.$zipCode = cut[3];
-      
+      this.adressInfos.$street = cut[0];
+      this.adressInfos.$city = cut[1];
+      this.adressInfos.$state = cut[2];
+      this.adressInfos.$zipCode = cut[3];
+
       document.getElementById("sendSubmit").classList.remove('disabled');
       document.getElementById("sendSubmit").removeAttribute("disabled"); 
 

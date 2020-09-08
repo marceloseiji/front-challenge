@@ -50,7 +50,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     FormsModule,
     MatSnackBarModule
   ],
-  providers: [],
+  providers: [EstablishmentListComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
