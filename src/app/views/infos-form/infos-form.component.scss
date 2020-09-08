@@ -96,14 +96,19 @@
       margin: 0 10px;
     }
   }
-  .submit-button {
-    background-color: #1eda60;
-    color: $white;
-    border-radius: 25px;
-    padding: 5px 30px;
-    transition: 0.5s ease;
-    &:hover {
-      cursor: pointer;
+  .btn-holder {
+    width: 100%;
+    text-align: right;
+    .submit-button {
+      background-color: #1eda60;
+      color: $white;
+      border-radius: 25px;
+      padding: 5px 40px;
+      transition: 0.5s ease;
+      margin: 0 10px;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
   .submit-button.disabled {

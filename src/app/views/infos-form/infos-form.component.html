@@ -130,15 +130,17 @@
       </mat-select>
     </mat-form-field>
 
-    <button
-      disabled
-      (click)="changeEstablishment(); showHide(); openSnackBar('Alterações salvas', 'x')"
-      id="sendSubmit"
-      class="submit-button disabled"
-      mat-flat-button
-    >
-      Salvar
-    </button>
+    <div class="btn-holder">
+      <button
+        disabled
+        (click)="changeEstablishment(); showHide(); openSnackBar('Alterações salvas', 'x')"
+        id="sendSubmit"
+        class="submit-button"
+        mat-flat-button
+      >
+        Salvar
+      </button>
+    </div>
 
   </div>
 </div>
