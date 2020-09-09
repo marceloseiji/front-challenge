@@ -18,7 +18,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 5) Caso não seja o local host correto deve aparecer no console após usar o comando ng serve
 
-## Deploy to github pages
+## Deploy no github pages
 
 1) Faça o download do projeto e abra-o em sua ide.
 2) Em uma conta do github crie um repositório para o projeto.
